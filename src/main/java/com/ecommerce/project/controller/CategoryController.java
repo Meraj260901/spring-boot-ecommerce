@@ -24,7 +24,8 @@ public class CategoryController {
             @RequestParam(name = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) Integer pageSize,
             @RequestParam(name = "sortBy", defaultValue = AppConstants.SORT_CATEGORIES_BY, required = false) String sortBy,
             @RequestParam(name = "sortOrder", defaultValue = AppConstants.SORT_DIR, required = false) String sortOrder,
-            Sort sort){
+            Sort sort
+    ){
         CategoryResponse categoryResponse = categoryService.getAllCategories(pageNumber, pageSize, sortBy, sortOrder);
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
@@ -45,7 +46,7 @@ public class CategoryController {
     public ResponseEntity<CategoryDTO> updateCategory(
             @Valid @RequestBody CategoryDTO categoryDTO,
             @PathVariable Long categoryId
-            ) {
+    ){
         CategoryDTO savedCategoryDTO = categoryService.updateCategory(categoryDTO, categoryId);
         return new ResponseEntity<>(savedCategoryDTO, HttpStatus.OK);
     }
